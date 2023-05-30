@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Reservations from './Reservations';
+import Form from './Form';
 
 class App extends Component {
   constructor() {
@@ -9,6 +10,10 @@ class App extends Component {
       existingReservations: [], 
       error: ''
     }
+  }
+
+  addReservation = (newReserv) => {
+    this.setState( { existingReservations: [...this.state.existingReservations, newReserv]})
   }
 
   componentDidMount() {
@@ -27,7 +32,7 @@ class App extends Component {
       this.setState({error: `${error}`})
     )
   }
-  
+
   render() {
     const { existingReservations } = this.state
     console.log('here', existingReservations)
@@ -36,6 +41,7 @@ class App extends Component {
         <div className="App">
           <h1 className='app-title'>Turing Cafe Reservations</h1>
           <div className='resy-form'>
+            <Form addReserv={this.addReservation}/>
   
           </div>
           <div className='resy-container'>
