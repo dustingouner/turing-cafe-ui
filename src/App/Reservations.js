@@ -11,17 +11,22 @@ function Reservations({allReservations}) {
     console.log('all',allReservations);
     const reservationCards = allReservations.map(reservation => {
       console.log('res', reservation);
-      <div className='singleReservation'>
+    
+      return (
         <ReservationCard 
           id={reservation.id}
           name={reservation.name}
           key={reservation.id}
+          date={reservation.date}
+          time={reservation.time}
+          guests={reservation.number}
           />
-      </div>
+      )
+      
   
 })
     return(
-    <div className='cards'>
+    <div className='reservations-container'>
       {reservationCards}
     </div>
     )
